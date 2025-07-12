@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Film</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>Movie Recommender</h1>
+        <p>Temukan film favoritmu berdasarkan judul, aktor, atau sutradara!</p>
+    </div>
+
+    <div class="container">
+        <form id="recommendationForm">
+            <div class="input-options">
+                <input type="radio" id="searchByTitle" name="search_type" value="title" checked>
+                <label for="searchByTitle">Cari Berdasarkan Judul Film</label><br>
+                <input type="radio" id="searchByActor" name="search_type" value="actor">
+                <label for="searchByActor">Cari Berdasarkan Aktor</label><br>
+                <input type="radio" id="searchByDirector" name="search_type" value="director">
+                <label for="searchByDirector">Cari Berdasarkan Sutradara</label>
+            </div>
+            
+            <label for="searchTerm">Masukkan Pencarian:</label>
+            <input type="text" id="searchTerm" name="search_term" placeholder="Masukkan judul, aktor, atau sutradara" list="movieTitlesList" required>
+            <datalist id="movieTitlesList">
+                </datalist>
+            <button type="submit">Dapatkan Rekomendasi</button>
+        </form>
+
+        <div id="loadingMessage" class="message" style="display: none;">Mencari rekomendasi...</div>
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+        <div id="noResultMessage" class="message" style="display: none;"></div>
+
+        <div id="searchResult" style="display: none;">
+            </div>
+
+        <div id="recommendationsContainer" style="display: none;">
+            <div id="resultsGrid" class="movie-cards-container">
+                </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
